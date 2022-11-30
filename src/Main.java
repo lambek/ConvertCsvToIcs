@@ -1,10 +1,16 @@
-import create_ics.HandlerCsvToIcs;
+import create_google_documents.ConvectrCsvToIcs;
+import create_google_documents.ConverctrCsvToVcf;
 
 public class Main {
     public static void main(String[] args) {
-        HandlerCsvToIcs handlerCsvToIcs = new HandlerCsvToIcs();
-        handlerCsvToIcs.parserCsv("upload/school_Westra.csv");
-//        handlerCsvToIcs.setEvent("20221201T150000Z",
+        convectrCsvToIcs(); //создание задание в календарь
+        converctrCsvToVcf(); // создание сконтактав
+    }
+
+    static void convectrCsvToIcs(){
+        ConvectrCsvToIcs convectrCsvToIcs = new ConvectrCsvToIcs();
+        convectrCsvToIcs.parserCsv("upload/school_Westra.csv");
+//        convectrCsvToIcs.setEvent("20221201T150000Z",
 //                "20221201T160000Z",
 //                "Личное и бивачное снаряжение для горных походов 1-2 к.с.",
 //                "Волочаевская улица\\, 38Ас1\\, Москва",
@@ -12,6 +18,12 @@ public class Main {
 //                "CONFIRMED",
 //                "Лекция Вестра",
 //                "OPAQUE");
-        handlerCsvToIcs.creatFileIcs("upload/school_Westra.ics");
+        convectrCsvToIcs.creatFile("upload/school_Westra.ics");
+    }
+
+    static void converctrCsvToVcf(){
+        ConverctrCsvToVcf converctrCsvToVcf = new ConverctrCsvToVcf();
+        converctrCsvToVcf.parserCsv("upload/contact_by2023.csv");
+        converctrCsvToVcf.creatFile("upload/contact_by2023.vcf");
     }
 }
