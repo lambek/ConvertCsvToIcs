@@ -1,14 +1,12 @@
-package create_ics;
+package create_google_documents;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class HandlerCsvToIcs {
+public class ConvectrCsvToIcs implements ConvectrCsv {
     protected ArrayList<String> event = new ArrayList<>();
 
     /**
@@ -46,7 +44,7 @@ public class HandlerCsvToIcs {
     /**
      * @return
      */
-    public String preparedICel() {
+    public String preparedData() {
         String start = "BEGIN:VCALENDAR\n" +
                 "PRODID:-//Google Inc//Google Calendar 70.9054//EN\n" +
                 "VERSION:2.0\n" +
@@ -120,18 +118,6 @@ public class HandlerCsvToIcs {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     *
-     * @param path
-     */
-    public void creatFileIcs(String path) {
-        try (FileWriter writer = new FileWriter(path)) {
-            writer.write(this.preparedICel());
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }
